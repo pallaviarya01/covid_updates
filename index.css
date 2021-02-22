@@ -1,0 +1,65 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    background-image: url("D:\\Coronavirus1.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#header {
+    background-color: rgba(92, 212, 241, 0.479);
+    width: 100%;
+    height: 100px;
+    color: rgb(8, 8, 8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: large;
+}
+#p,#q,#r,#s{
+    text-decoration:solid;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-around;
+    width: 100px;
+    flex-direction: row;
+}
+#footer {
+    background-color: rgba(92, 212, 241, 0.479);
+    width: 100%;
+    height: 100px;
+    color: rgb(8, 8, 8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    
+}
+#logo{
+    font-size: 30px;
+    font-weight: 700;
+    font-style:initial;
+    
+}
+
+#forms {
+    width: 30%;
+    height: 100px;
+    margin: 20px 35%;
+}
+#details{
+    margin-top: 300px;
+}
+
+#updates {
+    width: 80%;
+    height: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(99, 99, 99, 0.384);
+    color: black;
+    margin: 20px 10%;
+    flex-direction: column;
+}

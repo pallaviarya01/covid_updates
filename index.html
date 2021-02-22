@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Covid Updates
+    </title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+        
+</head>
+
+<body>
+    <div id="header">
+        <div id="logo">Covid'19 Updates</div>
+        <div id="link"><a href="https://news.google.com/covid19/map?hl=en-IN&gl=IN&ceid=IN%3Aen" id="p"> News</a>
+        <a href="https://www.cdc.gov/coronavirus/2019-ncov/vaccines/index.html" id="q">vaccine</a>
+        <a href="https://corona.help/" id="r">Help</a>
+        <a href="https://www.cure-corona.net/wp-login.php?redirect_to=https%3A%2F%2Fwww.cure-corona.net%2F&bp-auth=1&action=bpnoaccess" id="s">Cure</a>
+        </div>
+    </div>
+    <div id="forms">
+        <input type="text" placeholder="Enter the country" id="country"><button id="submitbtn">Enter</button>
+    </div>
+    <div id="updates">
+
+    </div>
+    <div id="details">
+        <p>coronavirus.dc.gov/page/what-covid-19
+            COVID-19 is a new strain of coronavirus that has not been previously identified in humans.
+            The COVID-19 is the cause of an outbreak of respiratory illness first detected in Wuhan, Hubei province,
+            China.</p>
+    </div>
+    <div id="footer"
+        <p>Coronavirus Helpline Number India:
+            Get Coronavirus Helpline Number India of Central States and Union Territories Official Phone Number on +
+            91-11-23978046.</p>
+    </div>
+</body>
+<script>
+    var country = document.getElementById("country");
+    var submitButton = document.getElementById("submitbtn");
+    var updates = document.getElementById("updates")
+    var res = [];
+
+    submitButton.addEventListener('click', async function (e) {
+        e.preventDefault();
+        var url = "https://coronavirus-19-api.herokuapp.com/countries/" + country.value
+        console.log(url)
+        await fetch(url)
+
+            .then(response => {
+                return response.json();
+                console.log(response);
+            })
+            .then((data) => {
+                let newData = [data]
+                res = newData;
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        renderList();
+    })
+
+    function renderList() {
+        var result = "";
+        for (let i = 0; i < res.length; i++) {
+            var html = `
+            <div id="country"><h2>country:${res[i].country}</h2></div>
+            <div id="active">Active:${res[i].active}</div>
+        <div id="cases">cases:${res[i].cases}</div>
+        <div id="todayCases">todayCases:${res[i].todayCases}</div>
+        <div id="deaths">deaths:${res[i].deaths}</div>
+        <div id="todayDeaths">todayDeaths:${res[i].todayDeaths}</div>
+        <div id="active">active:${res[i].active}</div>
+        <div id="critical">critical:${res[i].critical}</div>
+        <div id="casesPerOneMillion">casesPerOneMillion:${res[i].casesPerOneMillion}</div>
+        <div id="deathsPerOneMillion">deathsPerOneMillion:${res[i].deathsPerOneMillion}</div>
+        <div id="recovered">recovered:${res[i].recovered}</div>
+        <div id="totaltest">Totaltest:${res[i].totalTests}</div>`
+            result += html;
+        }
+        updates.innerHTML = result;
+    }
+</script>
+
+</html>
